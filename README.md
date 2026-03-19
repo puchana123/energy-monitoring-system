@@ -1,6 +1,9 @@
 # IoT Smart Energy Monitoring System (ESP32)
+![System Overview](docs/Screenshot_Normal.png)
 
 An intelligent energy monitoring system designed for industrial environments. This project features real-time current sensing, edge-based anomaly detection, and cloud integration via MQTT.
+
+![MQTT Data Payload](docs/Screenshot_Chart02.png)
 
 ## 🚀 Key Features
 * **Real-time Monitoring:** Measures electrical current via analog sensors (simulated by Potentiometer).
@@ -14,7 +17,7 @@ An intelligent energy monitoring system designed for industrial environments. Th
 * **Development:** VS Code + PlatformIO.
 
 ## 🕹️ Live Demo
-[LIVE DEMO](https://wokwi.com/projects/458910672143229953)
+[![Run on Wokwi](https://img.shields.io/badge/Run%20on-Wokwi-blue?style=for-the-badge&logo=micro-dot-info)](https://wokwi.com/projects/458910672143229953)
 
 **How to use the demo:**
 1. Start the simulation.
