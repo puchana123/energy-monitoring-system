@@ -2,15 +2,15 @@
 #include <LiquidCrystal_I2C.h>
 #include <PubSubClient.h>
 #include <WiFi.h>
-#include <WiFiClientSecure.h>
+#include <WiFiClientSecure.h> // For Private MQTT Sever
 #include <Wire.h>
-#include "config.h"
+#include "config.h" // Configuration file for WiFi & MQTT
 
 // Pins definition
 const int POT_PIN = 36;
 const int LED_PIN = 2;
 
-const float THRESHOLD_ALERT = 15.0;
+const float THRESHOLD_ALERT = 15.0; // Change this value to adjust the alert threshold
 
 // Control Objects
 LiquidCrystal_I2C lcd(0x27, 16, 2);
@@ -40,7 +40,8 @@ void reconnect()
   while (!client.connected())
   {
     Serial.print("Attempting MQTT connection...");
-    if (client.connect("ESP32Client01", mqtt_username, mqtt_password))
+    // Attempt to connect with client id "ESP32Client01" and password on config file
+    if (client.connect("ESP32Client01", mqtt_username, mqtt_password)) 
     {
       Serial.println("connected");
       lcd.setCursor(0, 1);
@@ -57,7 +58,6 @@ void reconnect()
 
 void setup()
 {
-  // put your setup code here, to run once:
   Serial.begin(115200);
   pinMode(LED_PIN, OUTPUT); // Set the LED pin as output
 
@@ -91,6 +91,7 @@ void loop()
     lcd.setCursor(0, 0);
     lcd.print("!!OVERLOAD!!");
     digitalWrite(LED_PIN, HIGH);
+    // Blinking effect
     if ((millis() / 500) % 2 == 0)
     {
       lcd.noBacklight();
